@@ -1,29 +1,22 @@
-import React from 'react'
-import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
+import React from 'react';
 
-let Header = React.createClass({
-	render: function() {
-		return (
-			<div>
-				<nav className="navbar navbar-light bg-faded">
-					<ul className="nav navbar-nav">
-						<li className="nav-item active">
-							<Link className="nav-link" to="/">Home</Link>
-						</li>					
-						<li className="nav-item">
-							<Link className="nav-link" to="/about">About</Link>
-						</li>
-						<li className="nav-item">
-							<Link className="nav-link" to="/inbox">Inbox0</Link>
-						</li>
-						<li className="nav-item active">
-							<Link className="nav-link" to="/contact">Contact XZ</Link>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		)
+import TopBar from '../components/topbar.jsx';
+import Navigation from '../components/navigation.jsx';
+
+class Header extends React.Component {
+	constructor(props) {
+		super(props);
 	}
-});
+
+	render() {
+		return (
+			<div id="header">
+				<TopBar />
+				<Navigation />
+			</div>
+		);
+	}
+}
+
 
 export default Header
