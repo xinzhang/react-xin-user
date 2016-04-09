@@ -1,4 +1,5 @@
 import React from 'react';
+import { validateEmail, validateDisplayName, validatePassword } from '../../utilities/RegexValidators';
 
 class Login extends React.Component {
 	render() {
