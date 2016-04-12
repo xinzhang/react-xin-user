@@ -1,6 +1,39 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
+import { validateEmail, validateDisplayName, validatePassword } from '../utilities/regexValidators.js';
+
+const initialFormState = {
+    errorMessage: null,
+    isEmailFieldCorrect: true
+}
 
 class Register extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = Object.assign({}, initialFormState);
+        this.handleOnClickRegister = this.handleOnClickRegister.bind(this);
+    }
+
+    checkFormData(formData) {
+        let newState = Object.assign({}, initialFormState);
+        return newState;
+    }
+
+    handleOnClickRegister() {
+        console.log('start handle on click register');
+
+        var formData = {
+            email: this.refs.email.value.trim(),
+            password: this.refs.password.value.trim(),
+            confirmPassword: this.refs.confirmPassword.value.trim()
+        }
+
+        let newState = this.checkFormData(formData);
+        this.setState(newState);
+
+        console.log(formData);
+        this.props.onClickRegister(formData);
+    }
+
 	render() {
 		return (		
     		<div className="container content">
@@ -13,16 +46,16 @@ class Register extends React.Component {
                     		</div>
 		                   
 		                    <label>Email Address <span className="color-red">*</span></label>
-		                    <input type="text" className="form-control margin-bottom-20" />
+		                    <input type="text" className="form-control margin-bottom-20" ref="email"/>
 
 		                    <div class="row">
 		                        <div class="col-sm-6">
 		                            <label>Password <span className="color-red">*</span></label>
-		                            <input type="password" className="form-control margin-bottom-20" />
+		                            <input type="password" className="form-control margin-bottom-20" ref="password" />
 		                        </div>
 		                        <div class="col-sm-6">
 		                            <label>Confirm Password <span className="color-red">*</span></label>
-		                            <input type="password" className="form-control margin-bottom-20" />
+		                            <input type="password" className="form-control margin-bottom-20" ref="confirmPassword" />
 		                        </div>
 		                    </div>
 
@@ -36,7 +69,7 @@ class Register extends React.Component {
                             </label>                        
                         </div>
                         <div class="col-lg-6 text-right">
-                            <button className="btn-u" type="submit">Register</button>                        
+                            <button className="btn-u" onClick={this.handleOnClickRegister}>Register</button>                        
                         </div>
                     </div>
                 </form>
@@ -46,5 +79,9 @@ class Register extends React.Component {
 		)
 	}
 }
+
+Register.propTypes = {
+  onClickRegister: PropTypes.func.isRequired,
+};
 
 export default Register;

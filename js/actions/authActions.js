@@ -26,8 +26,10 @@ export function RegisterFail(error) {
 }
 
 export function attemptRegister(email, password, displayName) {
-  return (dispatch) => {
+  return (dispatch) => {  	
     dispatch(clickedRegister());
+
+    console.log('attepmpt register');
 
     $.ajax({
 			type: 'POST',
