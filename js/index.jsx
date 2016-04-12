@@ -32,9 +32,12 @@ var routes = (
 
 let store = createStore(RootReducer);
 
-render(
-  <Provider store={store}>
-    { () => <Router history={hashHistory} children={routes} /> }
-  </Provider>,
-  document.getElementById('main')
-)
+export default class Index extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+		    {() => <Router history={hashHistory} children={routes}/>}
+		  </Provider>
+    );
+  }
+};
