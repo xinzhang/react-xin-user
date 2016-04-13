@@ -13,7 +13,9 @@ import Login from '../components/login.jsx'
 import RegisterPage from '../pages/RegisterPage.jsx'
 
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk';
+
 import RootReducer from '../reducers/RootReducer'
 
 var routes = (
@@ -26,7 +28,7 @@ var routes = (
 );
 
 
-let store = createStore(RootReducer);
+let store = applyMiddleware(thunk)(createStore)(RootReducer);
 
 export default class Root extends React.Component {
   render() {

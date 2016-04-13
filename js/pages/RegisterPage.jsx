@@ -15,7 +15,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onClickRegister: (formData) => {
-      console.log('come to register page onclickregister');
       dispatch(attemptRegister(formData.email, formData.password, "n/a"))
     }
   }

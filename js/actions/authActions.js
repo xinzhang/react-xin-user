@@ -26,6 +26,8 @@ export function RegisterFail(error) {
 }
 
 export function attemptRegister(email, password, displayName) {
+
+
   return (dispatch) => {  	
     dispatch(clickedRegister());
 
@@ -47,6 +49,7 @@ export function attemptRegister(email, password, displayName) {
 			  dispatch(RegisterFail("TODO find the error..."));
 			});
   }
+  
 }
 
 // ------------------------------------------
