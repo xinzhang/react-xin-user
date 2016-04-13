@@ -15,14 +15,15 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onClickRegister: (formData) => {
-      dispatch(ttemptRegister(formData.email, formData.password, "n/a"))
+      console.log('come to register page onclickregister');
+      dispatch(attemptRegister(formData.email, formData.password, "n/a"))
     }
   }
 }
 
 const RegisterPage = connect(
-	mapStateToProps,
-  	mapDispatchToProps
+	   mapStateToProps,
+  	 mapDispatchToProps
 )(Register)
 
 export default RegisterPage
